@@ -1,0 +1,35 @@
+<import src="post-item/post-item-template.wxml"/>
+<view>
+  
+  <view>
+    <swiper circular="true" next-margin="100rpx" previous-margin="100rpx" indicator-active-color="#fff" vertical="{{false}}" indicator-dots='true' autoplay='true' interval='2000'>
+      <swiper-item><image src='/images/wx.png'></image></swiper-item>
+      <swiper-item><image src='/images/vr.png'></image></swiper-item>
+      <swiper-item><image src='/images/iqiyi.png'></image></swiper-item>
+    </swiper>
+  </view>
+  <block wx:for="{{posts_key}}" wx:index="index" wx:for-item="item" wx:key="unique">
+    <view catchtap="onPostTap" data-postId="{{item.postId}}">
+      <template is="postItem" data="{{...item}}" catchtap="onPostTap"/>
+    </view>
+    
+  </block>
+  <block wx:for="{{posts_key}}" wx:index="index" wx:for-item="item" wx:key="unique">
+    <view class='post-container'>
+      <view class='post-author-date'>
+        <image src="{{item.avatar}}" class='post-author'></image>
+        <text class='post-date'>{{item.date}}</text>
+      </view>
+      <text class='post-title'>{{index+1}}.{{item.title}}</text>
+      <image src='{{item.imgSrc}}' class='post-image'></image>
+      <text class='post-content'>{{item.content}}</text>
+      <view class='post-like'>
+        <image src='../../images/icon/chat.png' class='post-like-image'></image>
+        <text class='post-like-font'>{{item.collection}}</text>
+        <image src='../../images/icon/view.png' class='post-like-image'></image>
+        <text class='post-like-font'>{{item.reading}}</text>
+      </view>
+    </view>
+  </block>
+  
+</view>
