@@ -1,8 +1,8 @@
 <view class='container'>
-  <image src="{{postData.headImgSrc}}" class='head-image'></image>
-  <image src="/images/music/music-start.png" class='audio'></image>
+  <image src="{{isPlayingMusic?postData.music.coverImg:postData.headImgSrc}}" class='head-image'></image>
+  <image src="{{isPlayingMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}" class='audio' catchtap='onMusicTap'></image>
   <view class='author-date'>
-    <image src="{{postData.avatar}}"class='avatar'></image>
+    <image src="{{postData.avatar}}" class='avatar'></image>
     <text class='author'>{{postData.author}}</text>
     <text class='const-text'>发表于</text>
     <text class='date'>{{postData.dateTime}}</text>
@@ -11,10 +11,12 @@
   <view class='tool'>
     <view class='circle-img'>
       <image src='/images/icon/collection.png' catchtap="onColletionTap" wx:if="{{collected}}"></image>
-      <image wx:else  catchtap="onColletionTap"  src='/images/icon/collection-anti.png'></image>
+      <image wx:else catchtap="onColletionTap" src='/images/icon/collection-anti.png'></image>
       <image src='/images/icon/share.png' class='share-img' catchtap="onShareTap"></image>
     </view>
+
     <view class='horizon'></view>
   </view>
   <text class='detail'>{{postData.detail}}</text>
+
 </view>

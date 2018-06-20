@@ -10,8 +10,13 @@ var local_database = [
     headImgSrc: '/images/post/crab.png',
     author: '李白',
     dataTime: '24time',
-    detail: '并可以在手机上体验该小程序的实际效果。',
-    postId: 1
+    detail: '大吉大利，今晚吃鸡。',
+    postId: 0,
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100003507bR0gDKBm.m4a?fromtag=38",
+      title: "夜夜夜夜-齐秦",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
+    }
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -26,7 +31,12 @@ var local_database = [
     author: '李白2',
     dataTime: '24time',
     detail: '并可。',
-    postId: 1
+    postId: 1,
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100002I8eGJ28BI17.m4a?fromtag=38",
+      title: "谭咏麟：朋友",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000004eGsCN3SUheO.jpg?max_age=2592000"
+    }
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -41,7 +51,12 @@ var local_database = [
     author: '李白3',
     dataTime: '24time',
     detail: '并序的实际效果。',
-    postId: 2
+    postId: 2,
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100003507bR0gDKBm.m4a?fromtag=38",
+      title: "齐秦，夜夜夜夜",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000001TEc6V0kjpVC.jpg?max_age=2592000"
+    }
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -56,7 +71,12 @@ var local_database = [
     author: '李白4',
     dataTime: '24time',
     detail: '体验该小程序的实际效果。',
-    postId: 3
+    postId: 3,
+    music: {
+      url: "http://ws.stream.qqmusic.qq.com/C100000Zn0vS4fKKo8.m4a?fromtag=38",
+      title: "张国荣，沉默是金",
+      coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000003at0mJ2YrR2H.jpg?max_age=2592000",
+    }
   },
 ]
 module.exports = {

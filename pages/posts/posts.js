@@ -27,7 +27,7 @@ Page({
     //console.log(postid);
     wx.navigateTo({
       //postId这个参数自定义
-      url: 'post-detail/post-detail?postId='+postid,
+      url: 'post-detail/post-detail?id='+postid,
     })
   }
 })
