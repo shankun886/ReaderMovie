@@ -29,5 +29,21 @@ Page({
       //postId这个参数自定义
       url: 'post-detail/post-detail?id='+postid,
     })
+  },
+  onSwiperItemTap:function(e){
+    var postid = e.currentTarget.dataset.postid;
+    wx.navigateTo({
+      //postId这个参数自定义
+      url: 'post-detail/post-detail?id=' + postid,
+    })
+  },
+  onSwiperTap:function(e){
+    //target:指的是当前点击的组件,這裡指的是image
+    //currentTarget：指的是事件捕获的组件，這裡指的是swiper組件
+    var postid = e.target.dataset.postid;
+    wx.navigateTo({
+      //postId这个参数自定义
+      url: 'post-detail/post-detail?id=' + postid,
+    })
   }
 })

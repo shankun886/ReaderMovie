@@ -1,20 +1,16 @@
 Page({
   onTap:function(event){
-    wx.redirectTo({
-      url: '../posts/posts',
-    });
-    //wx.navigateTo({
+    // wx.redirectTo({
+    //   //沒回退功能使用
+    //   url: '../posts/posts'
+    // })
+    // wx.navigateTo({
+    //   //有回退功能使用
     //  url: '../posts/posts',
-    //  success:function(res){
-    //    console.log(1);
-     // },
-     // fail:function(){
-      //  console.log(2);
-     // },
-     // complete:function(){
-      //  console.log(3);
-     // }
-    //})
+    // })
+    wx.switchTab({
+      url: "../posts/posts"
+    });
   },
  
 })
