@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js')
 var app = getApp();
 Page({
   data: {
@@ -10,8 +11,8 @@ Page({
   onLoad: function (e) {
     //+"?start=0&count=3"   豆瓣API截取前三条数据
     var inTheatersUrl = app.globalData.doubanBase + "/v2/movie/in_theaters"+"?start=0&count=3";
-    var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon"+"?start=0&count=3";
-    var top250Url = app.globalData.doubanBase + "/v2/movie/top250"+"?start=0&count=3";
+    var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon"+"?start=4&count=3";
+    var top250Url = app.globalData.doubanBase + "/v2/movie/top250"+"?start=6&count=3";
     this.getMovieListData(inTheatersUrl,"inTheaters");
     this.getMovieListData(comingSoonUrl,"comingSoon");
     this.getMovieListData(top250Url,"top250");
@@ -45,11 +46,15 @@ Page({
         title:title,
         average: subject.rating.average,
         coverageUrl: subject.images.large,
-        movieId: subject.id
+        movieId: subject.id,
+        stars: util.converToStarsArray(subject.rating.stars)
       }
       movies.push(temp)
     }
+    //动态绑定三个列表的值。对readyData的3个属性赋值
     var readyData = {};
+    //readyData[settedKey] = movies;
+    //解决movie-list-template.wxml下通过movies绑定inTheaters  comingSoon  top250三个不同值
     readyData[settedKey] = {
       movies: movies
     };
