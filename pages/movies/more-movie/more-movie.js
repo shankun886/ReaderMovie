@@ -5,6 +5,9 @@ Page({
   data: {
     movies:{},
     navigateTitle:"",
+    totalCount:0,
+    requsetUrl:"",
+    isEmpty:true
   },
   onLoad: function (options) {
     var category = options.category;
@@ -24,7 +27,26 @@ Page({
         var dataUrl = app.globalData.doubanBase + "/v2/movie/top250";
         break;
     }
+    this.setData({
+      requsetUrl: dataUrl,
+    })
     util.http(dataUrl, this.processDoubanData);
+  },
+  onScrollLower: function(e){
+    var nextUrl = this.data.requsetUrl + "?start=" + this.data.totalCount + "&count=20";
+    util.http(nextUrl, this.processDoubanData);
+    wx.showNavigationBarLoading()
+  },
+  onPullDownRefresh:function(e){
+    var refreshUrl = this.data.requsetUrl + "?start=0&count=20";
+    this.setData({
+      movies:{},
+      isEmpty:true,
+
+    })
+    util.http(refreshUrl, this.processDoubanData);
+    wx.showNavigationBarLoading();
+  
   },
   processDoubanData: function (moviesDouban) {
     var movies = [];
@@ -43,11 +65,20 @@ Page({
       }
       movies.push(temp)
     }
-    this.setData({
-      movies: movies,
+    var totalMovies = {}; 
+    //如果要绑定新加载的数据，需要同旧有的数据合并在一起
+    if(!this.data.isEmpty){
+      totalMovies = this.data.movies.concat(movies);
+    }else{
+      totalMovies = movies;
+      this.data.isEmpty = false;
     }
-
-    );
+    this.setData({
+      movies: totalMovies,
+    });
+    this.data.totalCount += 20;
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
   onReady: function (e) {
     wx.setNavigationBarTitle({

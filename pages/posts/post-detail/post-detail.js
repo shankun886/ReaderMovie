@@ -65,7 +65,14 @@ Page({
       })
       app.globalData.g_isPlayingMusic = false;
       app.globalData.g_currentMusicPostId = null;
-    })
+    });
+    wx.onBackgroundAudioStop(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    });
   },
 
   onColletionTap: function (event) {
@@ -74,7 +81,6 @@ Page({
     var postCollected = postsCollected[this.data.currentPostid];
     postCollected = !postCollected;
     postsCollected[this.data.currentPostid] = postCollected;
-
     this.showToast(postCollected, postsCollected);
 
 
