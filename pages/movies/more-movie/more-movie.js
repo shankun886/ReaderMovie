@@ -32,7 +32,13 @@ Page({
     })
     util.http(dataUrl, this.processDoubanData);
   },
-  onScrollLower: function(e){
+   onMovieTap:function(e){
+    var movieId = e.currentTarget.dataset.movieid
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id='+movieId
+    })
+  },
+  onReachBottom: function(e){
     var nextUrl = this.data.requsetUrl + "?start=" + this.data.totalCount + "&count=20";
     util.http(nextUrl, this.processDoubanData);
     wx.showNavigationBarLoading()
@@ -42,7 +48,7 @@ Page({
     this.setData({
       movies:{},
       isEmpty:true,
-
+      totalCount:0
     })
     util.http(refreshUrl, this.processDoubanData);
     wx.showNavigationBarLoading();

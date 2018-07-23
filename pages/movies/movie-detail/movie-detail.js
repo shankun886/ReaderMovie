@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movies:{}
+    movies:{},
+    mode:"aspectFill"
   },
 
   /**
@@ -18,6 +19,10 @@ Page({
     util.http(url, this.processDoubanData)
   },
   processDoubanData:function(data){
+    //console.log(data);
+    if(!data){
+      return;
+    }
     var director = {
       avatar:"",
       name:"",
@@ -49,7 +54,14 @@ Page({
     this.setData({
       movie:movie
     })
-    console.log(this.data.movie);
+    //console.log(this.data.movie);
+  },
+  viewMoviePostImg:function(e){
+    var src = e.currentTarget.dataset.src;
+    wx.previewImage({   //预览图片
+      urls: [src],//需要预览的图片http链接列表
+      //current: src,//当前显示图片的http链接
+    })
   }
 
   
